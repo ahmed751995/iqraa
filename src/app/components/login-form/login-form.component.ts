@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -6,10 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-
-  constructor() { }
+  email: string = '';
+  password: string = '';
+  
+  constructor(private authenticationService: AuthenticationService,
+	      public router: Router) { }
 
   ngOnInit(): void {
   }
+  onLogin(): void {
+    const value: Object = {
+      email: this.email,
+      password: this.password
+    }
+    this.authenticationService.Login(value)
+      .then(resp =>  this.router.navigate(['/']))
+      .catch(err => alert(err));
+  }
 
+  loginWithGoogle(): void {
+    this.authenticationService.LoginWithGoogle()
+      .then(resp => this.router.navigate(['/']))
+      .catch(err => alert(err));
+  }
 }

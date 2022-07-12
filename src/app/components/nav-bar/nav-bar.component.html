@@ -1,8 +1,9 @@
-<nav class="bg-sky-700 text-white">
+<nav *ngIf="dontHasRoute('/login') && dontHasRoute('/register')" class="bg-sky-700 text-white">
   <div>
     <ul>
       <li><a routerLink="/">home</a></li>
       <li><a routerLink="/photos">photos</a></li>
+      <li (click)="onLogout()"><a>Log out</a></li>
     </ul>
   </div>
 </nav>

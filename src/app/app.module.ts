@@ -24,12 +24,13 @@ import { ButtonComponent } from './components/button/button.component';
 import { PhotoDetailsComponent } from './components/photo-details/photo-details.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'photos', component: PhotosListComponent},
-  {path: 'photos/new-photo', component: PhotoFormComponent},
-  {path: 'photos/:id', component: PhotoDetailsComponent},
+  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'photos', component: PhotosListComponent, canActivate: [AuthGuard]},
+  {path: 'photos/new-photo', component: PhotoFormComponent, canActivate: [AuthGuard]},
+  {path: 'photos/:id', component: PhotoDetailsComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginFormComponent},
   {path: 'register', component: RegisterFormComponent}
 ]
@@ -60,7 +61,7 @@ const routes: Routes = [
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
