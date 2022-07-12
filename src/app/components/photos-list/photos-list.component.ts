@@ -25,7 +25,8 @@ export class PhotosListComponent implements OnInit {
   }
 
   deleteCard(id: string): void {
-    console.log("card deleted", id)
-    this.photoService.getPhoto(id).then(resp => console.log(resp))
+    this.photoService.deletePhoto(id)
+      .then(() => this.photos = this.photos.filter(photo => photo.id !== id))
+      .catch(err => alert(err))
   }
 }

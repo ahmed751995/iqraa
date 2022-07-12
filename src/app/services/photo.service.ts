@@ -6,9 +6,8 @@ import { Firestore,
 	 doc,
 	 getDoc,
 	 deleteDoc,
-	 updateDoc }
+	 updateDoc } from '@angular/fire/firestore';
 
-from '@angular/fire/firestore';
 // import { Observable } from 'rxjs';
 import { Photo } from './photo';
 
@@ -23,7 +22,8 @@ export class PhotoService {
   getPhotos(): Promise<Photo[]> {
     return getDocs(this.photo_db)
       .then((response) => response.docs.map(photo => {
-	return {id: photo.id, title: photo.data()['title'], date: photo.data()['date'],
+	return {id: photo.id, title: photo.data()['title'],
+		date: photo.data()['date'],
 		photoUrl: photo.data()['photoUrl']};
 	}))
   }
@@ -32,13 +32,18 @@ export class PhotoService {
     return getDoc(doc(this.photo_db, id))
       .then(photo => {
 	if(photo.exists())
-	  return {id: photo.id, title: photo.data()['title'], date: photo.data()['date'],
+	  return {id: photo.id, title: photo.data()['title'],
+		  date: photo.data()['date'],
 		  photoUrl: photo.data()['photoUrl']};
 	else return null
       })
   }
 
-  postPhoto() {
-    
+  postPhoto(photo: Photo): Promise<any> {
+    return addDoc(this.photo_db, photo);
+  }
+
+  deletePhoto(id:string): Promise<any> {
+    return deleteDoc(doc(this.photo_db, id));
   }
 }

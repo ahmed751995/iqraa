@@ -1,5 +1,5 @@
 <app-button text="add new" color="blue" (onClick)="newPhoto()"></app-button>
 <app-photo-card *ngFor="let photo of photos" [photo]="photo" (onClick)="openDetails(photo)"
-		(onDelete)="deleteCard(photo.id)">
+		(onDelete)="photo.id && deleteCard(photo.id)">
   
 </app-photo-card>
