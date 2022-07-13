@@ -16,7 +16,7 @@ export class PhotoCardComponent implements OnInit {
 
   ngOnInit(): void {
     const tx = new Date(this.photo.date);
-    this.text_date = tx.toDateString();
+    this.text_date = tx.toLocaleString().replace(',', '');
   }
 
   cardClick(): void {

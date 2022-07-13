@@ -12,8 +12,10 @@ export class HomeComponent implements OnInit {
   constructor(private froalaService: FroalaService) { }
 
   ngOnInit(): void {
-    this.froalaService.getContent('saif')
-      .then(resp => this.editorContent = resp['content'])
+    // console.log("hihi")
+    // this.froalaService.getContent('saif')
+    //   .then(resp => this.editorContent = resp['content'])
+    // this.froalaService.getContent('sai').then(resp => console.log(resp))
   }
 
   saveContent(): void {

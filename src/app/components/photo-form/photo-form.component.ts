@@ -3,7 +3,7 @@ import { Photo } from '../../services/photo';
 import { PhotoService } from '../../services/photo.service';
 import { Router } from '@angular/router';
 import * as moment from 'moment-timezone';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-photo-form',
@@ -22,16 +22,18 @@ export class PhotoFormComponent implements OnInit {
 
   initializeForm(): void {
     this.photoForm = this.fb.group({
-      title: '',
-      photoUrl: ''
+      title: ['', [Validators.required, Validators.minLength(6)]],
+      photoUrl: ['', Validators.required]
     })
   }
 
   
   onSubmit(): void {
+    if(this.photoForm.invalid) return;
+
     const moment_time = Date.parse(moment().tz('Africa/Cairo').format());
     const photo: Photo = {
-      title: this.photoForm.value.title,
+      title: this.photoForm.value.title, 
       date: moment_time,
       photoUrl: this.photoForm.value.photoUrl
     }

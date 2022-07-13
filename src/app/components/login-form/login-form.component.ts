@@ -18,19 +18,26 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   onLogin(): void {
     const value: Object = {
       email: this.email,
       password: this.password
     }
     this.authenticationService.Login(value)
-      .then(resp =>  this.router.navigate(['/']))
+      .then(resp =>  {
+	localStorage.setItem('uid', resp.user.uid);
+	this.router.navigate(['/'])
+      })
       .catch(err => alert(err));
   }
 
   loginWithGoogle(): void {
     this.authenticationService.LoginWithGoogle()
-      .then(resp => this.router.navigate(['/']))
+      .then(resp =>{
+	localStorage.setItem('uid', resp.user.uid);
+	this.router.navigate(['/']);
+      })
       .catch(err => alert(err));
   }
 }
