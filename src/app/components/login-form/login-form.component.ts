@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-login-form',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginFormComponent implements OnInit {
   email: string = '';
   password: string = '';
+  faGoogle = faGoogle;
   
   constructor(private authenticationService: AuthenticationService,
 	      public router: Router) { }

@@ -8,12 +8,15 @@ import { Photo } from '../../services/photo';
 })
 export class PhotoCardComponent implements OnInit {
   @Input() photo!: Photo;
-
   @Output() onClick: EventEmitter<any> = new EventEmitter();
   @Output() onDelete: EventEmitter<any> = new EventEmitter();
+  text_date!: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    const tx = new Date(this.photo.date);
+    this.text_date = tx.toDateString();
   }
 
   cardClick(): void {

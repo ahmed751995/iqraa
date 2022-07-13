@@ -1,6 +1,6 @@
 <div >
   <p>{{ photo.title }}</p>
-  <p> {{ photo.date }} </p>
+  <p> {{ text_date }} </p>
   <img (click)="cardClick()" src="{{ photo.photoUrl }}" alt="image here" class="w-12 h-12" />
   <app-button text="delete" color="red" (click)="deleteClick()"></app-button>
 </div>

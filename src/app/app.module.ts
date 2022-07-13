@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg'; // froalaeditor
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // fontawesome
@@ -53,7 +53,8 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(routes, {enableTracing: true}),
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes, {enableTracing: false}),
     FontAwesomeModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
