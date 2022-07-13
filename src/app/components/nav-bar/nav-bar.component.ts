@@ -8,7 +8,7 @@ import { AuthenticationService } from '../../services/authentication.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
+  toggle_nav: boolean = false;
   constructor(public router: Router, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {

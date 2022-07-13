@@ -1,11 +1,43 @@
-<form (ngSubmit)="onRegister()">
-  <div>
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" [(ngModel)]="email"/>
-  </div>
-    <div>
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" [(ngModel)]="password"/>
+<!-- <form (ngSubmit)="onRegister()"> -->
+<!--   <div> -->
+<!--     <label for="email">Email</label> -->
+<!--     <input type="email" id="email" name="email" [(ngModel)]="email"/> -->
+<!--   </div> -->
+<!--     <div> -->
+<!--       <label for="password">Password</label> -->
+<!--       <input type="password" id="password" name="password" [(ngModel)]="password"/> -->
+<!--     </div> -->
+<!--     <button type="submit">Register</button> -->
+<!-- </form> -->
+
+
+<form (ngSubmit)="onRegister()" ngNativeValidate>
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mt-10 mx-20 lg:mx-40">
+    <div class="mb-4">
+      <label class="block text-grey-darker text-sm font-bold mb-2" for="email">
+        Email
+      </label>
+      <input type="email" id="email" required minlength="10" name="email"  [(ngModel)]="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" placeholder="Username">
     </div>
-    <button type="submit">Register</button>
+    <div class="mb-6">
+      <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
+        Password
+      </label>
+      <input type="password" id="password" name="password" required minlength="7" [(ngModel)]="password" class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" placeholder="******************">
+    </div>
+      <div class="mb-6">
+      <label class="block text-grey-darker text-sm font-bold mb-2" for="repassword">
+        Re enter password
+      </label>
+      <input type="password" id="repassword" name="repassword" required minlength="7" [(ngModel)]="repassword" class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" placeholder="******************">
+    </div>
+    <div class="flex items-center justify-between">
+      <button *ngIf="repassword === password" type="submit" class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
+	Register
+      </button>
+       <p>
+	Do you have an account? <a class="text-red-600 font-semibold hover:text-red-700" routerLink="/login">Login</a>
+      </p>
+    </div>
+  </div>
 </form>

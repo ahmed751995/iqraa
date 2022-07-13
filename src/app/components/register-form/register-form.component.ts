@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class RegisterFormComponent implements OnInit {
   email: string = '';
   password: string = '';
+  repassword: string = '';
   
   constructor(private authenticationService: AuthenticationService,
 	      public router: Router) { }

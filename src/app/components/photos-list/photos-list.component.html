@@ -1,5 +1,17 @@
-<app-button text="add new" color="blue" (onClick)="newPhoto()"></app-button>
-<app-photo-card *ngFor="let photo of photos" [photo]="photo" (onClick)="openDetails(photo)"
-		(onDelete)="photo.id && deleteCard(photo.id)">
+<!-- <app-button text="add new" cus_class="bg-blue-700 hover:bg-blue-900" (onClick)="newPhoto()"></app-button> -->
+<!-- <app-photo-card *ngFor="let photo of photos" [photo]="photo" (onClick)="openDetails(photo)" -->
+<!-- 		(onDelete)="photo.id && deleteCard(photo.id)"> -->
   
-</app-photo-card>
+  <!-- </app-photo-card> -->
+
+<app-button text="add new" cus_class="bg-blue-700 hover:bg-blue-900" (onClick)="newPhoto()"></app-button>
+<!-- component -->
+<div class=" mx-auto lg:max-w-7xl mt-3 ">
+  <div class="max-w-7xl mx-auto px-5 mb-3">
+    <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+      <app-photo-card *ngFor="let photo of photos" [photo]="photo" (onClick)="openDetails(photo)"
+		      (onDelete)="photo.id && deleteCard(photo.id)"></app-photo-card>
+
+    </div>
+  </div>
+</div>

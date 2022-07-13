@@ -1,6 +1,29 @@
-<div >
-  <p>{{ photo.title }}</p>
-  <p> {{ text_date }} </p>
-  <img (click)="cardClick()" src="{{ photo.photoUrl }}" alt="image here" class="w-12 h-12" />
-  <app-button text="delete" color="red" (click)="deleteClick()"></app-button>
+<!-- <div > -->
+<!--   <p>{{ photo.title }}</p> -->
+<!--   <p> {{ text_date }} </p> -->
+<!--   <img (click)="cardClick()" src="{{ photo.photoUrl }}" alt="image here" class="w-12 h-12" /> -->
+<!--   <app-button text="delete" color="red" (click)="deleteClick()"></app-button> -->
+<!-- </div> -->
+    <!--Card 1-->
+    
+<!-- <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mr-2"> -->
+<!--   <img class="rounded-t-lg mx-h-12" src="{{ photo.photoUrl}}" alt=""> -->
+<!--     <div class="p-5"> -->
+<!--         <a href="#"> -->
+<!--             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ photo.title }}</h5> -->
+<!--         </a> -->
+<!--         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ text_date }}</p> -->
+<!--        <app-button text="delete" cus_class="bg-red-700 hover:bg-red-900 py-2 px-7" (click)="deleteClick()"></app-button> -->
+<!--     </div> -->
+<!-- </div> -->
+
+
+<div
+  class="max-w-xl bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <img class="rounded-t-lg px-5 py-2"  src="{{ photo.photoUrl }}" />
+  <div class="p-5">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ photo.title }}</h5>
+    <div class="text-xs font-bold uppercase text-teal-700 mt-1 mb-2">{{ text_date }}</div>
+     <app-button text="delete" cus_class="bg-red-700 hover:bg-red-900 py-2 px-7" (click)="deleteClick()"></app-button>
+  </div>
 </div>
