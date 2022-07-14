@@ -25,7 +25,7 @@ export class LoginFormComponent implements OnInit {
       password: this.password
     }
     this.authenticationService.Login(value)
-      .then(resp =>  {
+      .then(() =>  {
 	this.router.navigate(['/'])
       })
       .catch(err => alert(err));

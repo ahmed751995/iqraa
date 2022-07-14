@@ -6,7 +6,7 @@ import { Firestore,
 	 doc,
 	 getDoc,
 	 deleteDoc,
-	 updateDoc } from '@angular/fire/firestore';
+	 query, orderBy, startAfter, limit,startAt, endBefore, limitToLast } from '@angular/fire/firestore';
 
 // import { Observable } from 'rxjs';
 import { Photo } from './photo';
@@ -20,12 +20,9 @@ export class PhotoService {
   constructor(public firestore: Firestore) { }
 
   getPhotos(): Promise<Photo[]> {
-    return getDocs(this.photo_db)
-      .then((response) => response.docs.map(photo => {
-	return {id: photo.id, title: photo.data()['title'],
-		date: photo.data()['date'],
-		photoUrl: photo.data()['photoUrl']};
-	}))
+    const q =  query(this.photo_db, orderBy('date'), limit(2))
+    return getDocs(q)
+      .then((response) => this.formatePhotos(response.docs));
   }
 
   getPhoto(id: string): Promise<Photo | null> {
@@ -45,5 +42,23 @@ export class PhotoService {
 
   deletePhoto(id:string): Promise<any> {
     return deleteDoc(doc(this.photo_db, id));
+  }
+
+  formatePhotos(photos: any[]): Photo[] | [] {
+    return photos.map(photo => {
+      return {id: photo.id, title: photo.data()['title'],
+	      date: photo.data()['date'],
+	      photoUrl: photo.data()['photoUrl']};
+    });
+  }
+
+  getNext(date: number): Promise<Photo[] | []> {
+    const q =  query(this.photo_db, orderBy('date'),startAfter(date), limit(2));
+    return getDocs(q).then(response => this.formatePhotos(response.docs));
+  }
+
+  getPrev(date: number): Promise<Photo[] | []> {
+    const q = query(this.photo_db, orderBy('date'), endBefore(date), limitToLast(2))
+    return getDocs(q).then(response => this.formatePhotos(response.docs));
   }
 }

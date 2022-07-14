@@ -12,12 +12,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PhotoFormComponent implements OnInit {
   photoForm!: FormGroup;
-  
+  submitted: boolean = false;
   constructor(private photoService: PhotoService, private fb: FormBuilder,
 	      public router: Router) { }
 
   ngOnInit(): void {
     this.initializeForm();
+    console.log(this.photoForm.get('title'))
   }
 
   initializeForm(): void {
@@ -29,6 +30,7 @@ export class PhotoFormComponent implements OnInit {
 
   
   onSubmit(): void {
+    this.submitted = true
     if(this.photoForm.invalid) return;
 
     const moment_time = Date.parse(moment().tz('Africa/Cairo').format());
@@ -40,5 +42,6 @@ export class PhotoFormComponent implements OnInit {
     this.photoService.postPhoto(photo)
       .then(() => this.router.navigate(['/photos']))
       .catch(err => alert(err));
+    this.submitted = false
   }
 }

@@ -15,11 +15,11 @@ export class AuthenticationService {
   
   constructor(public auth: Auth) { }
 
-  Login(value: any) {
+  Login(value: any): Promise<any> {
     return signInWithEmailAndPassword(this.auth, value.email, value.password);
   }
 
-  Register(value: any) {
+  Register(value: any): Promise<any> {
     return createUserWithEmailAndPassword(this.auth, value.email, value.password);
   }
 
@@ -38,7 +38,7 @@ export class AuthenticationService {
     })
   }
 
-  Logout(){
+  Logout(): Promise<any>{
     return signOut(this.auth)
   }
 

@@ -16,9 +16,10 @@ export class HomeComponent implements OnInit {
     // this.froalaService.getContent('saif')
     //   .then(resp => this.editorContent = resp['content'])
     // this.froalaService.getContent('sai').then(resp => console.log(resp))
-    this.froalaService.getContent()
-      .then(resp => this.editorContent = resp.exists() ? resp.data()['editorContent'] : '')
-      .catch(err => alert(err))
+    if(!this.editorContent)
+      this.froalaService.getContent()
+	.then(resp => this.editorContent = resp.exists() ? resp.data()['editorContent'] : '')
+	.catch(err => alert(err))
   }
 
   saveContent(): void {

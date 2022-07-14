@@ -29,4 +29,19 @@ export class PhotosListComponent implements OnInit {
       .then(() => this.photos = this.photos.filter(photo => photo.id !== id))
       .catch(err => alert(err))
   }
+
+  nextPage(): void {
+    const d:number= this.photos[this.photos.length - 1].date;
+    this.photoService.getNext(d)
+      .then(photos =>this.photos = photos)
+      .catch(err => alert(err))
+  }
+
+  prevPage(): void {
+    console.log(this.photos)
+    const d: number= this.photos[0].date;
+    this.photoService.getPrev(d)
+      .then(photos =>this.photos = photos)
+      .catch(err => alert(err))
+  }
 }
