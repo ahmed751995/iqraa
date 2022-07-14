@@ -12,8 +12,8 @@
 <!-- <button (click)="loginWithGoogle()">Login With Google</button> -->
 
 
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mt-10 sm:mx-0 lg:mx-40">
 <form (ngSubmit)="onLogin()" ngNativeValidate>
-  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mt-10 sm:mx-0 lg:mx-40">
     <div class="mb-4">
       <label class="block text-grey-darker text-sm font-bold mb-2" for="email">
         Email
@@ -37,6 +37,6 @@
     <div class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
       <p class="text-center font-semibold mx-4 mb-0">Or</p>
     </div>
-    <button (click)="loginWithGoogle()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-60 mx-auto"><fa-icon [icon]="faGoogle"></fa-icon> Continue with Google</button>
-  </div>
 </form>
+<button (click)="loginWithGoogle()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-60 mx-auto"><fa-icon [icon]="faGoogle"></fa-icon> Continue with Google</button>
+</div>

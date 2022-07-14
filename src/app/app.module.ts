@@ -28,8 +28,8 @@ import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: 'photos', component: PhotosListComponent},
-  {path: 'photos/new-photo', component: PhotoFormComponent},
+  {path: 'photos', component: PhotosListComponent, canActivate: [AuthGuard]},
+  {path: 'photos/new-photo', component: PhotoFormComponent, canActivate: [AuthGuard]},
   {path: 'photos/:id', component: PhotoDetailsComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginFormComponent},
   {path: 'register', component: RegisterFormComponent}

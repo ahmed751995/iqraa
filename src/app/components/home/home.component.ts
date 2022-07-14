@@ -16,13 +16,13 @@ export class HomeComponent implements OnInit {
     // this.froalaService.getContent('saif')
     //   .then(resp => this.editorContent = resp['content'])
     // this.froalaService.getContent('sai').then(resp => console.log(resp))
+    this.froalaService.getContent()
+      .then(resp => this.editorContent = resp.exists() ? resp.data()['editorContent'] : '')
+      .catch(err => alert(err))
   }
 
   saveContent(): void {
-    const froala: Froala = {
-      id: 'saif',
-      content: this.editorContent
-    }
-    this.froalaService.updateContent(froala).then(resp => console.log(resp));
+    console.log('toggle save')
+    this.froalaService.updateContent(this.editorContent);
   }
 }

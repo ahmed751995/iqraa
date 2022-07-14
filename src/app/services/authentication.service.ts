@@ -10,8 +10,8 @@ import { Auth,
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthenticationService {
-  provider: any = new GoogleAuthProvider();
   
   constructor(public auth: Auth) { }
 
@@ -23,14 +23,16 @@ export class AuthenticationService {
     return createUserWithEmailAndPassword(this.auth, value.email, value.password);
   }
 
-  LoginWithGoogle() {
-    return signInWithPopup(this.auth, this.provider)
+  LoginWithGoogle(): Promise<any> {
+    return signInWithPopup(this.auth, new GoogleAuthProvider());
   }
 
   isLoggedin(): Promise<boolean> {
     return new Promise((resolve) => {
       onAuthStateChanged(this.auth, (user) => {
-	if(user) resolve(true);
+	if(user) {
+	 resolve(true); 
+	}
 	else resolve(false);
       })
     })

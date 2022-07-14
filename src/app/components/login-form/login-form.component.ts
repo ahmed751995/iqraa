@@ -26,7 +26,6 @@ export class LoginFormComponent implements OnInit {
     }
     this.authenticationService.Login(value)
       .then(resp =>  {
-	localStorage.setItem('uid', resp.user.uid);
 	this.router.navigate(['/'])
       })
       .catch(err => alert(err));
@@ -35,7 +34,6 @@ export class LoginFormComponent implements OnInit {
   loginWithGoogle(): void {
     this.authenticationService.LoginWithGoogle()
       .then(resp =>{
-	localStorage.setItem('uid', resp.user.uid);
 	this.router.navigate(['/']);
       })
       .catch(err => alert(err));

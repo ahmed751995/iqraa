@@ -15,7 +15,7 @@ export class FroalaService {
   
   constructor(public firestore: Firestore, public auth: Auth) { }
 
-  getContent() {
+  getContent(): Promise<any>{
     // return new Promise(resolve => {
     //   onAuthStateChanged(this.auth, user => {
     // 	if(user) {
@@ -28,9 +28,26 @@ export class FroalaService {
     // 	return {id: froala.id, content: froala.data()['content']}
     //   else return {id: '', content: ''}
     // })
+    // getDoc(doc(this.froala_db, 'xekJ86pOxndrPeKM9Xf0Retaken3'))
+    
+    //   .then(resp => console.log(resp.data()));
+    return new Promise((resolve, reject) => {
+      onAuthStateChanged(this.auth, user => {
+	if(user) {
+	  resolve(getDoc(doc(this.froala_db, user.uid)));
+	}
+	else reject(null);
+      })
+    });
   }
 
-  updateContent(froala: Froala): Promise<any> {
-    return setDoc(doc(this.froala_db, froala.id), {content: froala.content});
+  updateContent(content: string): Promise<any|null> {
+    return new Promise((resolve, reject) => {
+      if(this.auth.currentUser) {
+	resolve(setDoc(doc(this.froala_db, this.auth.currentUser.uid), {editorContent: content}));
+      }
+      else reject(null);
+    })
   }
 }
+

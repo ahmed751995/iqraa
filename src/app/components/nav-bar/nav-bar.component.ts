@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
-
+import { Auth } from '@angular/fire/auth';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -13,7 +13,7 @@ export class NavBarComponent implements OnInit {
     {value: 'Home', route: '/'},
     {value: 'Photos', route: '/photos'}
   ] 
-  constructor(public router: Router, private authenticationService: AuthenticationService) { }
+  constructor(public router: Router, private authenticationService: AuthenticationService, public auth: Auth) { }
 
   ngOnInit(): void {}
 
@@ -23,8 +23,7 @@ export class NavBarComponent implements OnInit {
 
   onLogout(): void {
     this.authenticationService.Logout()
-      .then(() => {
-	localStorage.removeItem('uid');
+      .then((resp) => {
 	this.router.navigate(['/login']);
       })
       .catch((error) => alert(error))
