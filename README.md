@@ -1,27 +1,28 @@
 # Iqraa
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
+Iqraa is an angular app that work as an image viewer with froala editor where users can add photo and save contents using  froala editor.
+user can login with account or google account, and if he doesn't has an account he can register.
 
-## Development server
+## Getting Setup
+>_tip_: this app is designed to work with firebase as backend. It's recommended for you to setup backend first to start using this app smoothly.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Installing Dependencies
 
-## Code scaffolding
+#### Installing Node and NPM
+This project depends on Node Package Manager (NPM). Before continuing you must download and install Node (the download includes NPM) from [https://nodejs.com/en/download](https://nodejs.org/en/download/).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Installing project dependencies
 
-## Build
+This project uses NPM to manage software dependencies. NPM Relies on the package.json file located in the `frontend` directory of this repository. After cloning, open your terminal and run:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install
+```
 
-## Running unit tests
+>_tip_: **npm i** is shorthand for **npm install**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Then run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Running end-to-end tests
+### Deployment
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `ng deploy` after setting up your firebase account and the app will deploy on firebase.
