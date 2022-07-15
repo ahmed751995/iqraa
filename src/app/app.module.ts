@@ -11,8 +11,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // fontawe
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { PhotosListComponent } from './components/photos-list/photos-list.component';
-import { PhotoComponent } from './components/photo/photo.component';
-
 
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app'; // angularfire
 import { environment } from '../environments/environment';
@@ -21,7 +19,6 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore'; // angu
 import { PhotoCardComponent } from './components/photo-card/photo-card.component';
 import { PhotoFormComponent } from './components/photo-form/photo-form.component';
 import { ButtonComponent } from './components/button/button.component';
-import { PhotoDetailsComponent } from './components/photo-details/photo-details.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { AuthGuard } from './auth.guard';
@@ -30,7 +27,6 @@ const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'photos', component: PhotosListComponent, canActivate: [AuthGuard]},
   {path: 'photos/new-photo', component: PhotoFormComponent, canActivate: [AuthGuard]},
-  {path: 'photos/:id', component: PhotoDetailsComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginFormComponent},
   {path: 'register', component: RegisterFormComponent}
 ]
@@ -41,11 +37,9 @@ const routes: Routes = [
     NavBarComponent,
     HomeComponent,
     PhotosListComponent,
-    PhotoComponent,
     PhotoCardComponent,
     PhotoFormComponent,
     ButtonComponent,
-    PhotoDetailsComponent,
     LoginFormComponent,
     RegisterFormComponent,
   ],

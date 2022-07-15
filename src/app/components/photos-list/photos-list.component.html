@@ -1,21 +1,15 @@
-<!-- <app-button text="add new" cus_class="bg-blue-700 hover:bg-blue-900" (onClick)="newPhoto()"></app-button> -->
-<!-- <app-photo-card *ngFor="let photo of photos" [photo]="photo" (onClick)="openDetails(photo)" -->
-<!-- 		(onDelete)="photo.id && deleteCard(photo.id)"> -->
-  
-  <!-- </app-photo-card> -->
-
-<app-button text="add new" cus_class="bg-blue-700 hover:bg-blue-900" (onClick)="newPhoto()"></app-button>
+<app-button text="add new" cus_class="bg-blue-700 hover:bg-blue-900 ml-4" (onClick)="newPhoto()"></app-button>
 <!-- component -->
 <div class=" mx-auto lg:max-w-7xl mt-3 ">
   <div class="max-w-7xl mx-auto px-5 mb-3">
     <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-      <app-photo-card *ngFor="let photo of photos" [photo]="photo" (onClick)="openDetails(photo)"
+      <app-photo-card *ngFor="let photo of photos" [photo]="photo"
 		      (onDelete)="photo.id && deleteCard(photo.id)"></app-photo-card>
 
     </div>
   </div>
 </div>
 <div class="flex justify-center flex-wrap mb-10">
-  <app-button *ngIf="photos.length > 0" text="previous" cus_class="bg-blue-600 mr-1 w-24" (onClick)="prevPage()"></app-button>
-  <app-button *ngIf="photos.length > 0" text="next" cus_class="bg-blue-600 mr-1 w-24 h-15" (onClick)="nextPage()"></app-button>
+  <app-button *ngIf="show_prev" text="previous" cus_class="bg-blue-600 mr-1 w-24" (onClick)="prevPage()"></app-button>
+  <app-button *ngIf="show_next" text="next" cus_class="bg-blue-600 mr-1 w-24 h-15" (onClick)="nextPage()"></app-button>
 </div>

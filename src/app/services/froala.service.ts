@@ -6,7 +6,7 @@ import { Firestore,
 	 deleteDoc,
 	 setDoc } from '@angular/fire/firestore';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
-import { Froala } from './froala';
+
 @Injectable({
   providedIn: 'root'
 })

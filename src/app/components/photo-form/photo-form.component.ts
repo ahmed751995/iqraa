@@ -13,12 +13,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PhotoFormComponent implements OnInit {
   photoForm!: FormGroup;
   submitted: boolean = false;
+  
   constructor(private photoService: PhotoService, private fb: FormBuilder,
 	      public router: Router) { }
 
   ngOnInit(): void {
     this.initializeForm();
-    console.log(this.photoForm.get('title'))
   }
 
   initializeForm(): void {
