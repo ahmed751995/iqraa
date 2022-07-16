@@ -1,5 +1,5 @@
 <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mt-10 mx-20 lg:mx-40">
-  <app-alert color="red" [show]="showError" text="{{error}}"></app-alert>
+  <app-alert color="bg-red-100 border-red-500 text-red-900" [show]="showError" text="{{error}}"></app-alert>
   <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
     <div class="mb-4">
       <label class="block text-grey-darker text-sm font-bold mb-2" for="email">

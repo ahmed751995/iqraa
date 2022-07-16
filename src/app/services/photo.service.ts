@@ -7,6 +7,7 @@ import { Firestore,
 	 getDoc,
 	 deleteDoc,
 	 query, orderBy, startAfter, limit,startAt, endBefore, limitToLast } from '@angular/fire/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
 
 // import { Observable } from 'rxjs';
 import { Photo } from './photo';
@@ -61,5 +62,11 @@ export class PhotoService {
   getPrev(date: number): Promise<Photo[] | []> {
     const q = query(this.photo_db, orderBy('date'), endBefore(date), limitToLast(this.lim))
     return getDocs(q).then(response => this.formatedPhotos(response.docs));
+  }
+
+  uploadPhoto(photo: any): Promise<string> {
+    const pathRef = ref(getStorage(), `/photos/${photo.name}`);
+    return uploadBytes(pathRef, photo)
+      .then((snapshot) => getDownloadURL(snapshot.ref))
   }
 }

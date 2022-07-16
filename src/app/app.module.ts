@@ -23,6 +23,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { AuthGuard } from './auth.guard';
 import { AlertComponent } from './components/alert/alert.component';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -56,7 +57,8 @@ const routes: Routes = [
     FroalaViewModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage())
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
