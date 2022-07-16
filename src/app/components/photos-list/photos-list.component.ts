@@ -35,8 +35,9 @@ export class PhotosListComponent implements OnInit {
   }
 
   updateView(photos: Photo[]): void {
-      localStorage.setItem('history', JSON.stringify(photos[0].date))
-      this.photos = photos    
+    localStorage.setItem('history', JSON.stringify(photos[0].date))
+    this.photos = photos
+    window.scrollTo(0,0);
   }
   
   nextPage(): void {
