@@ -19,7 +19,7 @@
       <p *ngIf="(loginForm.get('password')!.hasError('required') || loginForm.get('password')!.hasError('pattern')) && submitted"
        class="text-red-600">Password is required and must contains capital letter, special letter and numbers</p>
     </div>
-    <div class="flex items-center justify-between">
+    <div class="flex md:flex-row flex-col items-center justify-between">
       <button type="submit" class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
         Login
       </button>
