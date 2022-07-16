@@ -25,6 +25,7 @@ export class NavBarComponent implements OnInit {
     this.authenticationService.Logout()
       .then((resp) => {
 	this.router.navigate(['/login']);
+	localStorage.clear();
       })
       .catch((error) => alert(error))
   }

@@ -12,11 +12,16 @@ import { PhotoService } from '../../services/photo.service';
 export class PhotosListComponent implements OnInit {
   photos: Photo[] = [];
   constructor(public router: Router, private photoService: PhotoService) { }
-  show_prev = false;
+  show_prev = true;
   show_next = true;
   ngOnInit(): void {
     this.photoService.getPhotos()
-      .then(photos => this.photos = photos)
+      .then(photos => {
+	if(photos.length > 0) {
+	  localStorage.setItem('history', JSON.stringify(photos[0].date))
+	  this.photos = photos
+	}
+      })
       .catch(err => alert(err))
   }
   
@@ -30,15 +35,19 @@ export class PhotosListComponent implements OnInit {
       .catch(err => alert(err))
   }
 
+  updateView(photos: Photo[]): void {
+      localStorage.setItem('history', JSON.stringify(photos[0].date))
+      this.photos = photos    
+  }
+  
   nextPage(): void {
     const d:number= this.photos[this.photos.length - 1].date;
     this.photoService.getNext(d)
-      .then(photos =>{
+      .then(photos => {
 	if(photos.length > 0) {
-	  this.photos = photos
+	  this.updateView(photos)
 	  this.show_prev = true;
-	}
-	else this.show_next = false;
+	} else this.show_next = false;
       })
       .catch(err => alert(err))
   }
@@ -48,9 +57,9 @@ export class PhotosListComponent implements OnInit {
     this.photoService.getPrev(d)
       .then(photos => {
 	if(photos.length > 0) {
-	  this.photos = photos
-	  this.show_next = true
-	} else this.show_prev = false
+	  this.updateView(photos)
+	  this.show_next = true;
+	} else this.show_prev = false;
       })
       .catch(err => alert(err))
   }

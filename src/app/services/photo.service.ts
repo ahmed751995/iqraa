@@ -22,7 +22,10 @@ export class PhotoService {
   constructor(public firestore: Firestore) { }
 
   getPhotos(): Promise<Photo[]> {
-    const q =  query(this.photo_db, orderBy('date'), limit(this.lim))
+    let start: number = 0;
+    if(localStorage.getItem('history'))
+      start = parseInt(JSON.parse(localStorage.getItem('history')!))
+    const q =  query(this.photo_db, orderBy('date'),startAt(start), limit(this.lim));
     return getDocs(q)
       .then((response) => this.formatedPhotos(response.docs));
   }
