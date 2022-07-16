@@ -9,6 +9,7 @@ export class HomeComponent implements OnInit {
   editorContent : string = "" ;
   success: boolean = false;
   
+  
   constructor(private froalaService: FroalaService) { }
 
   ngOnInit(): void {

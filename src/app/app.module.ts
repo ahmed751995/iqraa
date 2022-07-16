@@ -22,6 +22,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { AuthGuard } from './auth.guard';
+import { AlertComponent } from './components/alert/alert.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -42,6 +43,7 @@ const routes: Routes = [
     ButtonComponent,
     LoginFormComponent,
     RegisterFormComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
