@@ -24,13 +24,15 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { AuthGuard } from './auth.guard';
 import { AlertComponent } from './components/alert/alert.component';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'photos', component: PhotosListComponent, canActivate: [AuthGuard]},
   {path: 'photos/new-photo', component: PhotoFormComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginFormComponent},
-  {path: 'register', component: RegisterFormComponent}
+  {path: 'register', component: RegisterFormComponent},
+  {path: '**', component: NotFoundComponent, canActivate: [AuthGuard]}
 ]
 
 @NgModule({
@@ -45,6 +47,7 @@ const routes: Routes = [
     LoginFormComponent,
     RegisterFormComponent,
     AlertComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

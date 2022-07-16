@@ -18,8 +18,7 @@ export class PhotosListComponent implements OnInit {
     this.photoService.getPhotos()
       .then(photos => {
 	if(photos.length > 0) {
-	  localStorage.setItem('history', JSON.stringify(photos[0].date))
-	  this.photos = photos
+	  this.updateView(photos);
 	}
       })
       .catch(err => alert(err))
